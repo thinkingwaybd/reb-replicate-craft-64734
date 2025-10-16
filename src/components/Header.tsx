@@ -1,63 +1,74 @@
 import { useState } from "react";
-import { Menu, X, ChevronDown, Phone, Mail } from "lucide-react";
+import { Menu, X, ChevronDown, Phone, Mail, Languages } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useLanguage } from "@/contexts/LanguageContext";
 import schoolLogo from "@/assets/school-logo.png";
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const { language, toggleLanguage, t } = useLanguage();
 
   const menuItems = [
-    { label: "HOME", href: "/" },
+    { label: t("home"), href: "/" },
     { 
-      label: "ABOUT", 
+      label: t("about"), 
       href: "#about",
-      submenu: ["At a Glance", "History", "Vision & Mission", "Principal's Message"]
+      submenu: [t("atAGlance"), t("history"), t("visionMission"), t("principalMessage")]
     },
     { 
-      label: "INFORMATION", 
+      label: t("information"), 
       href: "#information",
-      submenu: ["Teachers", "Staff Info", "Students", "Uniform"]
+      submenu: [t("teachers"), t("staffInfo"), t("students"), t("uniform")]
     },
     { 
-      label: "NOTICE BOARD", 
+      label: t("noticeBoard"), 
       href: "#notices",
-      submenu: ["Notice", "Official Notice", "Circulars"]
+      submenu: [t("notice"), t("officialNotice"), t("circulars")]
     },
-    { label: "ADMISSION", href: "#admission" },
+    { label: t("admission"), href: "#admission" },
     { 
-      label: "RESULTS", 
+      label: t("results"), 
       href: "#results",
-      submenu: ["Current Result", "Academic 2024", "Academic 2023", "Academic 2022"]
+      submenu: [t("currentResult"), t("academic2024"), t("academic2023"), t("academic2022")]
     },
     { 
-      label: "GALLERY", 
+      label: t("gallery"), 
       href: "#gallery",
-      submenu: ["Photo Gallery", "Video Gallery", "Events"]
+      submenu: [t("photoGallery"), t("videoGallery"), t("events")]
     },
-    { label: "CONTACT", href: "#contact" },
+    { label: t("contact"), href: "#contact" },
   ];
 
   return (
     <header className="sticky top-0 z-50 bg-background shadow-md">
       {/* Top Contact Bar */}
-      <div className="bg-gradient-to-r from-primary via-primary-hover to-primary text-primary-foreground">
-        <div className="container mx-auto px-4 py-2.5">
+      <div className="bg-gradient-to-r from-primary via-primary/95 to-primary text-primary-foreground shadow-sm">
+        <div className="container mx-auto px-4 py-3">
           <div className="flex flex-wrap items-center justify-between text-sm">
             <div className="flex items-center gap-6">
-              <span className="flex items-center gap-2 hover:scale-105 transition-transform">
-                <Phone className="h-3.5 w-3.5" />
-                <span className="font-medium">Call Us: 01309134670</span>
+              <span className="flex items-center gap-2 hover:scale-105 transition-transform cursor-pointer">
+                <Phone className="h-4 w-4" />
+                <span className="font-medium">{t("callUs")}: 01309134670</span>
               </span>
-              <span className="hidden md:flex items-center gap-2">
-                <Mail className="h-3.5 w-3.5" />
-                <span className="font-medium">info@rebmsc.edu.bd</span>
+              <span className="hidden md:flex items-center gap-2 hover:scale-105 transition-transform cursor-pointer">
+                <Mail className="h-4 w-4" />
+                <span className="font-medium">info@rmc.edu.bd</span>
               </span>
-              <span className="hidden lg:inline font-semibold">EIIN NO: 134670</span>
+              <span className="hidden lg:inline font-semibold">{t("eiin")}: 134670</span>
             </div>
             <div className="flex items-center gap-4">
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={toggleLanguage}
+                className="flex items-center gap-2 h-8 px-3 hover:bg-white/10 text-primary-foreground font-medium"
+              >
+                <Languages className="h-4 w-4" />
+                <span>{language === "en" ? "বাংলা" : "English"}</span>
+              </Button>
               <a href="#login" className="hover:underline font-medium transition-all hover:scale-105">
-                Login
+                {t("login")}
               </a>
             </div>
           </div>
@@ -65,25 +76,25 @@ const Header = () => {
       </div>
 
       {/* Main Header */}
-      <div className="bg-background border-b-2 border-primary/10">
-        <div className="container mx-auto px-4 py-6">
-          <div className="flex items-center justify-between">
-            {/* Logo and School Name */}
-            <div className="flex items-center gap-4 group">
-              <div className="relative">
+      <div className="bg-background border-b border-primary/10">
+        <div className="container mx-auto px-4 py-6 md:py-8">
+          <div className="flex items-center justify-between gap-4">
+            {/* Logo and College Name */}
+            <div className="flex items-center gap-3 md:gap-5 group">
+              <div className="relative flex-shrink-0">
                 <img 
                   src={schoolLogo} 
-                  alt="School Logo" 
-                  className="h-14 md:h-20 w-auto group-hover:scale-110 transition-transform duration-300"
+                  alt="College Logo" 
+                  className="h-16 md:h-24 lg:h-28 w-auto group-hover:scale-105 transition-transform duration-300 drop-shadow-lg"
                 />
-                <div className="absolute inset-0 bg-primary/10 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div className="absolute inset-0 bg-primary/5 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity" />
               </div>
-              <div>
-                <h1 className="text-xl md:text-3xl lg:text-4xl font-bold text-foreground leading-tight mb-1">
-                  রাজশাহী শিক্ষা বোর্ড সরকারি মডেল স্কুল এন্ড কলেজ
+              <div className="flex flex-col gap-1">
+                <h1 className="text-lg md:text-2xl lg:text-4xl xl:text-5xl font-bold text-foreground leading-tight tracking-tight">
+                  {t("collegeNameBangla")}
                 </h1>
-                <p className="text-base md:text-xl lg:text-2xl font-semibold text-primary">
-                  Rajshahi Shikkha Board Govt. Model School and College
+                <p className="text-sm md:text-lg lg:text-2xl xl:text-3xl font-semibold text-primary tracking-wide">
+                  {t("collegeName")}
                 </p>
               </div>
             </div>
@@ -92,21 +103,21 @@ const Header = () => {
             <div className="hidden lg:flex items-center gap-3">
               <Button 
                 variant="default" 
-                className="gradient-primary hover:shadow-primary transition-all hover:scale-105 font-semibold px-6"
+                className="gradient-primary hover:shadow-lg hover:shadow-primary/20 transition-all hover:scale-105 font-semibold px-6 py-6 text-base"
               >
-                Admission
+                {t("admission")}
               </Button>
               <Button 
                 variant="outline" 
-                className="border-2 border-primary text-primary hover:bg-primary hover:text-white transition-all hover:scale-105 font-semibold px-6"
+                className="border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all hover:scale-105 font-semibold px-6 py-6 text-base"
               >
-                Teacher Login
+                {t("teacherLogin")}
               </Button>
               <Button 
                 variant="secondary" 
-                className="bg-teal-500 text-white hover:bg-teal-600 transition-all hover:scale-105 font-semibold px-6"
+                className="bg-gradient-to-r from-teal-500 to-teal-600 text-white hover:from-teal-600 hover:to-teal-700 transition-all hover:scale-105 font-semibold px-6 py-6 text-base shadow-md"
               >
-                Download App
+                {t("downloadApp")}
               </Button>
             </div>
 
@@ -122,7 +133,7 @@ const Header = () => {
       </div>
 
       {/* Navigation Bar */}
-      <nav className="bg-primary text-primary-foreground shadow-lg">
+      <nav className="bg-gradient-to-r from-primary via-primary/98 to-primary text-primary-foreground shadow-lg border-t border-white/10">
         <div className="container mx-auto px-4">
           {/* Desktop Navigation */}
           <ul className="hidden lg:flex items-center justify-center">
@@ -135,19 +146,19 @@ const Header = () => {
               >
                 <a
                   href={item.href}
-                  className="flex items-center gap-1 px-5 py-4 font-semibold text-sm tracking-wide hover:bg-white/10 transition-all relative overflow-hidden group"
+                  className="flex items-center gap-1 px-6 py-4 font-bold text-sm tracking-wider hover:bg-white/15 transition-all relative overflow-hidden group"
                 >
                   <span className="relative z-10">{item.label}</span>
-                  {item.submenu && <ChevronDown className="h-4 w-4 transition-transform group-hover:rotate-180" />}
-                  <div className="absolute bottom-0 left-0 w-full h-1 bg-white transform scale-x-0 group-hover:scale-x-100 transition-transform" />
+                  {item.submenu && <ChevronDown className="h-4 w-4 transition-transform group-hover:rotate-180 duration-300" />}
+                  <div className="absolute bottom-0 left-0 w-full h-1 bg-white/90 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
                 </a>
                 {item.submenu && activeDropdown === item.label && (
-                  <ul className="absolute left-0 top-full bg-white text-foreground shadow-xl min-w-[240px] z-50 rounded-b-lg overflow-hidden animate-fade-in-up">
+                  <ul className="absolute left-0 top-full bg-white text-foreground shadow-2xl min-w-[260px] z-50 rounded-b-xl overflow-hidden animate-fade-in-up border-t-4 border-primary">
                     {item.submenu.map((subitem, idx) => (
-                      <li key={subitem} className={idx === 0 ? "border-t-2 border-primary" : ""}>
+                      <li key={subitem}>
                         <a
                           href="#"
-                          className="block px-5 py-3 hover:bg-primary/5 hover:text-primary transition-all hover:pl-7 border-l-4 border-transparent hover:border-primary"
+                          className="block px-6 py-3.5 hover:bg-primary/10 hover:text-primary transition-all hover:pl-8 border-l-4 border-transparent hover:border-primary font-medium"
                         >
                           {subitem}
                         </a>
@@ -167,7 +178,7 @@ const Header = () => {
                   <li key={item.label}>
                     <a
                       href={item.href}
-                      className="block px-4 py-3 hover:bg-white/10 rounded-lg transition-all font-semibold"
+                      className="block px-4 py-3 hover:bg-white/15 rounded-lg transition-all font-bold text-sm tracking-wide"
                       onClick={() => setMobileMenuOpen(false)}
                     >
                       {item.label}
@@ -176,14 +187,14 @@ const Header = () => {
                 ))}
               </ul>
               <div className="mt-4 space-y-2 px-4">
-                <Button variant="secondary" className="w-full gradient-primary font-semibold">
-                  Admission
+                <Button variant="secondary" className="w-full gradient-primary font-semibold shadow-lg">
+                  {t("admission")}
                 </Button>
                 <Button variant="outline" className="w-full border-2 border-white text-white hover:bg-white hover:text-primary font-semibold">
-                  Teacher Login
+                  {t("teacherLogin")}
                 </Button>
-                <Button variant="secondary" className="w-full bg-teal-500 hover:bg-teal-600 font-semibold">
-                  Download App
+                <Button variant="secondary" className="w-full bg-gradient-to-r from-teal-500 to-teal-600 hover:from-teal-600 hover:to-teal-700 font-semibold shadow-lg">
+                  {t("downloadApp")}
                 </Button>
               </div>
             </div>
