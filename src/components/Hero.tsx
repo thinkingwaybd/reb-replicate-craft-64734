@@ -45,29 +45,12 @@ const Hero = () => {
           </span>
         </h1>
 
-        <p className="text-white/90 text-base md:text-xl max-w-3xl mx-auto mb-8 font-light animate-fade-in-up" 
+        <p className="text-white/90 text-base md:text-xl max-w-3xl mx-auto mb-12 font-light animate-fade-in-up" 
            style={{ animationDelay: '0.4s' }}>
           Nurturing Excellence, Building Future Leaders Since 1965
           <br />
           <span className="text-orange-300 font-semibold">A Premier Educational Institution Under Rajshahi Education Board</span>
         </p>
-
-        <div className="flex flex-wrap gap-4 justify-center animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
-          <Button 
-            size="lg"
-            className="gradient-primary hover:shadow-primary transition-all hover:scale-105 font-bold text-base px-8 py-6 rounded-full"
-          >
-            Apply for Admission
-            <ArrowRight className="ml-2 h-5 w-5" />
-          </Button>
-          <Button 
-            size="lg"
-            variant="outline"
-            className="bg-white/10 backdrop-blur-sm border-2 border-white text-white hover:bg-white hover:text-primary transition-all hover:scale-105 font-bold text-base px-8 py-6 rounded-full"
-          >
-            Explore Campus
-          </Button>
-        </div>
 
         {/* Floating Stats */}
         <div className="grid grid-cols-3 gap-4 md:gap-8 max-w-3xl mx-auto mt-12 animate-fade-in-up" style={{ animationDelay: '0.8s' }}>

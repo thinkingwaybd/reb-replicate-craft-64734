@@ -1,48 +1,28 @@
-import { GraduationCap, Library, Award, Users, Microscope, Globe } from "lucide-react";
+import { GraduationCap, Building2, ArrowRight, BookOpen, Users, Award } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 
 const FeaturesSection = () => {
-  const features = [
+  const highlights = [
     {
-      icon: GraduationCap,
-      title: "Quality Education",
-      description: "Experienced faculty members providing excellent education with modern teaching methods and curriculum.",
-      color: "from-orange-500 to-red-500"
-    },
-    {
-      icon: Library,
-      title: "Rich Library",
-      description: "Well-stocked library with thousands of books, journals, and digital resources for students.",
-      color: "from-blue-500 to-cyan-500"
-    },
-    {
-      icon: Microscope,
-      title: "Science Labs",
-      description: "Fully equipped laboratories for Physics, Chemistry, Biology, and Computer Science.",
-      color: "from-green-500 to-emerald-500"
-    },
-    {
-      icon: Award,
-      title: "Excellent Results",
-      description: "Consistent outstanding results in SSC and HSC examinations year after year.",
-      color: "from-purple-500 to-pink-500"
+      icon: BookOpen,
+      title: "Expert Faculty",
+      description: "150+ experienced teachers",
     },
     {
       icon: Users,
-      title: "Co-curricular Activities",
-      description: "Sports, cultural programs, debates, and various clubs for holistic development.",
-      color: "from-yellow-500 to-orange-500"
+      title: "Active Students",
+      description: "2000+ enrolled students",
     },
     {
-      icon: Globe,
-      title: "Digital Campus",
-      description: "Smart classrooms, online learning resources, and modern educational technology.",
-      color: "from-teal-500 to-blue-500"
+      icon: Award,
+      title: "Success Rate",
+      description: "98% pass rate annually",
     },
   ];
 
   return (
-    <section className="py-20 bg-gradient-to-b from-background to-muted/30 relative overflow-hidden">
+    <section className="py-20 bg-gradient-to-b from-background via-muted/20 to-background relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5" 
            style={{ 
@@ -54,70 +34,124 @@ const FeaturesSection = () => {
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16 space-y-4">
           <div className="inline-block px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-bold mb-2">
-            Why Choose Us
+            Take Action
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-foreground">
-            Our Facilities & <span className="text-gradient">Features</span>
+            Start Your <span className="text-gradient">Journey</span> With Us
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            We provide world-class facilities and resources to ensure the best learning environment
-            for our students to thrive and excel.
+            Join one of the most prestigious educational institutions in Bangladesh
           </p>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {features.map((feature, index) => {
-            const Icon = feature.icon;
-            return (
-              <Card 
-                key={index} 
-                className="group hover:shadow-2xl transition-all duration-500 border-2 hover:border-primary/20 hover-lift overflow-hidden relative"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                {/* Gradient Background on Hover */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${feature.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500`} />
+        {/* Main Action Cards */}
+        <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto mb-16">
+          {/* Apply for Admission Card */}
+          <Card className="group hover:shadow-2xl transition-all duration-500 border-2 hover:border-primary overflow-hidden relative">
+            <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 to-red-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            
+            <CardContent className="p-8 md:p-10 relative z-10">
+              <div className="flex flex-col items-center text-center space-y-6">
+                <div className="h-24 w-24 rounded-3xl bg-gradient-to-br from-orange-500 to-red-500 flex items-center justify-center group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-2xl">
+                  <GraduationCap className="h-12 w-12 text-white" />
+                </div>
                 
-                <CardContent className="pt-8 pb-6 relative z-10">
-                  <div className="flex flex-col items-center text-center">
-                    {/* Icon Container with Gradient */}
-                    <div className={`h-20 w-20 rounded-2xl bg-gradient-to-br ${feature.color} flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-lg`}>
-                      <Icon className="h-10 w-10 text-white" />
-                    </div>
-                    
-                    <h3 className="text-xl font-bold mb-3 text-foreground group-hover:text-primary transition-colors">
-                      {feature.title}
-                    </h3>
-                    <p className="text-muted-foreground leading-relaxed">
-                      {feature.description}
-                    </p>
+                <div className="space-y-3">
+                  <h3 className="text-2xl md:text-3xl font-bold text-foreground">
+                    Apply for Admission
+                  </h3>
+                  <p className="text-muted-foreground leading-relaxed">
+                    Start your academic journey with us. Admission open for new session 2025. 
+                    Easy online application process with instant confirmation.
+                  </p>
+                </div>
 
-                    {/* Decorative Line */}
-                    <div className="w-0 group-hover:w-20 h-1 bg-gradient-to-r from-primary to-primary/50 mt-4 transition-all duration-500 rounded-full" />
+                <Button 
+                  size="lg"
+                  className="gradient-primary hover:shadow-lg hover:shadow-primary/30 transition-all hover:scale-105 font-bold text-base px-8 py-6 rounded-full w-full"
+                >
+                  Apply Now
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+
+                <div className="grid grid-cols-3 gap-4 w-full pt-4 border-t">
+                  {highlights.map((highlight, idx) => {
+                    const Icon = highlight.icon;
+                    return (
+                      <div key={idx} className="text-center">
+                        <Icon className="h-6 w-6 mx-auto mb-2 text-primary" />
+                        <div className="text-xs text-muted-foreground font-medium">
+                          {highlight.description}
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Explore Campus Card */}
+          <Card className="group hover:shadow-2xl transition-all duration-500 border-2 hover:border-primary overflow-hidden relative">
+            <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-cyan-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            
+            <CardContent className="p-8 md:p-10 relative z-10">
+              <div className="flex flex-col items-center text-center space-y-6">
+                <div className="h-24 w-24 rounded-3xl bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-2xl">
+                  <Building2 className="h-12 w-12 text-white" />
+                </div>
+                
+                <div className="space-y-3">
+                  <h3 className="text-2xl md:text-3xl font-bold text-foreground">
+                    Explore Campus
+                  </h3>
+                  <p className="text-muted-foreground leading-relaxed">
+                    Take a virtual tour of our modern facilities, classrooms, laboratories, 
+                    library, and sports complex. Experience campus life before joining.
+                  </p>
+                </div>
+
+                <Button 
+                  size="lg"
+                  variant="outline"
+                  className="border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all hover:scale-105 font-bold text-base px-8 py-6 rounded-full w-full"
+                >
+                  Virtual Tour
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+
+                <div className="w-full pt-4 border-t space-y-2">
+                  <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
+                    <div className="h-2 w-2 rounded-full bg-green-500 animate-pulse" />
+                    <span className="font-medium">Campus Open Daily 8AM - 5PM</span>
                   </div>
-                </CardContent>
-              </Card>
-            );
-          })}
+                  <div className="text-xs text-muted-foreground">
+                    Schedule a physical visit or explore online
+                  </div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
         </div>
 
         {/* Bottom Stats Banner */}
-        <div className="mt-16 bg-gradient-to-r from-primary via-primary-hover to-primary text-white rounded-3xl p-8 md:p-12 shadow-2xl">
-          <div className="grid md:grid-cols-4 gap-8 text-center">
+        <div className="bg-gradient-to-r from-primary via-primary/95 to-primary text-white rounded-3xl p-8 md:p-12 shadow-2xl">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 text-center">
             <div className="space-y-2">
-              <div className="text-4xl md:text-5xl font-bold">50+</div>
-              <div className="text-white/90 font-medium">Years of Excellence</div>
+              <div className="text-3xl md:text-5xl font-bold">50+</div>
+              <div className="text-white/90 font-medium text-sm md:text-base">Years of Excellence</div>
             </div>
             <div className="space-y-2">
-              <div className="text-4xl md:text-5xl font-bold">2000+</div>
-              <div className="text-white/90 font-medium">Active Students</div>
+              <div className="text-3xl md:text-5xl font-bold">2000+</div>
+              <div className="text-white/90 font-medium text-sm md:text-base">Active Students</div>
             </div>
             <div className="space-y-2">
-              <div className="text-4xl md:text-5xl font-bold">150+</div>
-              <div className="text-white/90 font-medium">Expert Teachers</div>
+              <div className="text-3xl md:text-5xl font-bold">150+</div>
+              <div className="text-white/90 font-medium text-sm md:text-base">Expert Teachers</div>
             </div>
             <div className="space-y-2">
-              <div className="text-4xl md:text-5xl font-bold">98%</div>
-              <div className="text-white/90 font-medium">Success Rate</div>
+              <div className="text-3xl md:text-5xl font-bold">98%</div>
+              <div className="text-white/90 font-medium text-sm md:text-base">Success Rate</div>
             </div>
           </div>
         </div>
